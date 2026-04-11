@@ -1,10 +1,16 @@
 *{
-    margin: 0;
+    margin: 10;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
+    padding: 10;
 }
 body{
-    background-color: black;
     color: azure;
     align-items: center;
+}
+#form{
+    background-color: darkgoldenrod;
+    align-items: center;
+    justify-content: center;
+    margin: 20;
+    padding: 20;
 }
