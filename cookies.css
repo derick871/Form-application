@@ -4,7 +4,7 @@
     padding: 10;
 }
 body{
-    background-color: black;
+    background-color: white;
     color: azure;
     align-items: center;
     justify-content: center;
@@ -15,7 +15,7 @@ body{
   transition: 0.3s;
   width: 300px;
   border-radius: 5px; 
-  background-color: darkgoldenrod;
+  background-color:sandybrown;
     align-items: center;
     justify-content: center;
     margin: 20;
@@ -23,5 +23,17 @@ body{
 
 #form:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+#btn{
+    background-color: blue;
+    color: azure;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    margin: 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 20px;
 }
 
