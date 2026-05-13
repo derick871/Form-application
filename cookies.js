@@ -1,32 +1,62 @@
-const form = document.getElementById("form");
-form.addEventListener("submit", function(e) {
+// Selecting elements
+const userForm = document.getElementById("userForm");
+const displaySection = document.getElementById("displaySection");
+
+// 1. Function to calculate age in months
+const calculateMonths = (age) => age * 12;
+
+// 2. Handle Form Submission
+userForm.addEventListener("submit", function(e) {
     e.preventDefault();
     
-    let username = document.getElementById("username").value;
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    let age = document.getElementById("age").value;
+    // Get values
+    const name = document.getElementById("username").value;
+    const age = parseInt(document.getElementById("age").value);
 
-    // Reset form
-    form.reset();
-    username = document.getElementById("username").value = "";
-     email = document.getElementById("email").value = "";
-     password = document.getElementById("password").value = "";
-     age = document.getElementById("age").value = "";
-    
-    alert("Form submitted");
-    console.log("Form submitted");
-    
-    // Set cookies
-    document.cookie = `username=${username}; path=/; expires=Wed, 22 Apr 2026 00:00:00 UTC`;
-    document.cookie = `email=${email}; path=/; expires=Wed, 22 Apr 2026 00:00:00 UTC`;
-    document.cookie = `password=${password}; path=/; expires=Wed, 22 Apr 2026 00:00:00 UTC`;
-    document.cookie = `age=${age}; path=/; expires=Wed, 22 Apr 2026 00:00:00 UTC`;
-    
-    
-});
-const button = document.getElementById("btn");
-button.addEventListener("click", function() {
-    form.dispatchEvent(new Event("submit"));
+    // 3. Store in localStorage
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userAge", age);
+
+    renderContent();
+    userForm.reset();
 });
 
+// 4. Function to display personalized content
+function renderContent() {
+    const storedName = localStorage.getItem("userName");
+    const storedAge = localStorage.getItem("userAge");
+
+    if (storedName && storedAge) {
+        displaySection.style.display = "block";
+
+        // Personalized Greeting using 
+        document.getElementById("greetingSlot").innerHTML = `<h2>Welcome back, ${storedName}!</h2>`;
+
+        // Age Calculation Display
+        const months = calculateMonths(storedAge);
+        document.getElementById("monthsSlot").innerText = `You are approximately ${months} months old.`;
+
+        // Conditional Logic (Adult Content Check)
+        const statusSlot = document.getElementById("ageStatusSlot");
+        if (storedAge >= 18) {
+            statusSlot.innerHTML = `<p style="color: green;">✔ You are old enough to access adult content.</p>`;
+        } else {
+            statusSlot.innerHTML = `<p style="color: brown;">✘ You are too young for adult content.</p>`;
+        }
+
+        // Loop to display motivational quote 5 times
+        const quoteSlot = document.getElementById("quoteSlot");
+        quoteSlot.innerHTML = ""; // Clear previous quotes
+        const quote = "Code is like humor. When you have to explain it, it’s bad.";
+        
+        for (let i = 0; i < 5; i++) {
+            const p = document.createElement("p");
+            p.innerText = `${i + 1}. ${quote}`;
+            p.style.fontStyle = "italic";
+            quoteSlot.appendChild(p);
+        }
+    }
+}
+
+// Check for data on page load
+window.onload = renderContent;

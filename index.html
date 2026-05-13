@@ -3,23 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>document</title>
+    <title>Personalized Portal</title>
     <link rel="stylesheet" href="cookies.css">
 </head>
 <body>
-    <div>
-        <div id="form" method="submit">
-            <form >
-                <input type="text" id="username" placeholder="Username" required> <br>
-                <input type="email" id="email" placeholder="Email" required> <br><br>
-                <input type="password" id="password" placeholder="Password" required> <br><br>
-                <input type="age" id="age" placeholder="Age" required> <br><br>
-            </form>
-            <button id="btn">submit</button>
-        </div>
-    </div>
-        <script src="cookies.js"></script>
 
-    
+    <main class="container">
+        <!-- Input Section -->
+        <section class="card">
+            <h2>User Registration</h2>
+            <form id="userForm">
+                <label for="username">Name</label>
+                <input type="text" id="username" placeholder="Enter your name" required>
+                
+                <label for="age">Age</label>
+                <input type="number" id="age" placeholder="Enter your age" required>
+                
+                <button type="submit" id="btn">Save Profile</button>
+            </form>
+        </section>
+
+        <section id="displaySection" class="card" style="display:none;">
+            <div id="greetingSlot"></div>
+            <div id="ageStatusSlot"></div>
+            <div id="monthsSlot"></div>
+            <hr>
+            <h3>Daily Motivation</h3>
+            <div id="quoteSlot"></div>
+        </section>
+    </main>
+
+    <script src="cookies.js"></script>
 </body>
 </html>
