@@ -47,7 +47,7 @@ function renderContent() {
         // Loop to display motivational quote 5 times
         const quoteSlot = document.getElementById("quoteSlot");
         quoteSlot.innerHTML = ""; // Clear previous quotes
-        const quote = "Code is like humor. When you have to explain it, it’s bad.";
+        const quote = "Small Commits, Big Impact. Don't wait for the  feature completion to feel successful. Aim for Atomic Wins - small, achievable milestones that build momentum and confidence. Celebrate each step forward, no matter how small, and watch your progress soar!";
         
         for (let i = 0; i < 5; i++) {
             const p = document.createElement("p");
